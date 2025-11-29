@@ -1,7 +1,19 @@
 #!/usr/bin/env python3
-def list_all(mongo_collection):
+""" List documents """
+import pymongo
+
+
+def list_all(mongo_collection) -> list:
+    """ Lists all documents in a collection
+        Args:
+            mongo_collection: Collection of object
+
+        Return:
+            List with documents, otherwise []
     """
-    List all documents in a MongoDB collection
-    """
-    docs = list(mongo_collection.find())
-    return docs
+    documents: list = []
+
+    for document in mongo_collection.find():
+        documents.append(document)
+
+    return documents
